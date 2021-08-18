@@ -1,0 +1,10 @@
+{#{% extends "base/base.html" %}#}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+<p><b>Welcome</b> to our site Nozimjon</p>
+
+{% block content %}
+    {{ page.body|richtext }}
+{% endblock %}

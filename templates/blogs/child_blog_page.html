@@ -1,0 +1,25 @@
+{#{% extends "base.html" %}#}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block content %}
+    <h1>{{ page.description }}</h1>
+
+    <div class="intro">{{ page.intro|richtext }}</div>
+    Phone: {{ page.created_at }}<br>
+    IMGAGE:
+    <div style="float: left; margin: 10px">
+        {% image item.img fill-320x240 %}
+        <p>{{ item.caption }}</p>
+    </div>
+
+    {% for post in page.get_children %}
+        <h2><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+        child's  intero: {{ post.specific.intro }},<br>
+        child's body:{{ post.specific.body|richtext }}
+    {% endfor %}
+    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+
+{% endblock %}
